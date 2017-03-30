@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PhotoControler extends Controller
+class GalleryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class PhotoControler extends Controller
      */
     public function index()
     {
-        //
+        return view('gallery/index');
     }
 
     /**
@@ -23,7 +23,7 @@ class PhotoControler extends Controller
      */
     public function create()
     {
-        //
+        return view('gallery/create');
     }
 
     /**
