@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\Gallery;
 use App\Http\Requests;
+use Session;
+
 class GalleryController extends Controller
 {
     /**
@@ -14,7 +17,9 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        return view('gallery/index');
+        $galleries = Gallery::all();
+
+        return view('gallery/index', compact('galleries'));
     }
 
     /**
@@ -57,7 +62,9 @@ class GalleryController extends Controller
 
         );
 
-        return \Redirect::route('gallery.index')->with('message', 'Gallery Created');
+        Session::flash('message', 'Gallery Created');
+
+        return Redirect::route('gallery.index');
         
     }
 
@@ -69,7 +76,8 @@ class GalleryController extends Controller
      */
     public function show($id)
     {
-        //
+        $gallery = Gallery::find($id);
+        return view('gallery.show')->withGallery($gallery);
     }
 
     /**
