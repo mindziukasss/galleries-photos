@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use App\Gallery;
+use App\Photo;
 use App\Http\Requests;
 use Session;
 
@@ -18,6 +19,7 @@ class GalleryController extends Controller
     public function index()
     {
         $galleries = Gallery::all();
+      
 
         return view('gallery/index', compact('galleries'));
     }
@@ -76,8 +78,11 @@ class GalleryController extends Controller
      */
     public function show($id)
     {
-        $gallery = Gallery::find($id);
-        return view('gallery.show')->withGallery($gallery);
+        // $gallery = Gallery::find($id);
+        // return view('gallery.show')->withGallery($gallery)->whithPhotos($photos);
+        $gallery = DB::table('galleries')->where('id', $id)->first();
+        $photos = DB::table('photos')->where('gallery_id', $id)->get();
+        return view('gallery/show', compact('gallery', 'photos'));
     }
 
     /**
