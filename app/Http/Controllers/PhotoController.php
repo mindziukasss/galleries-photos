@@ -80,6 +80,8 @@ class PhotoController extends Controller
     public function show($id)
     {
         $photo = Photo::find($id);
+
+        return view('photo/show')->withPhoto($photo);
     }
 
     /**

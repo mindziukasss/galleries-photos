@@ -15,7 +15,7 @@
 
   @foreach ($photos as $photo)
     <div class="column">
-      <a href="/photo/details/{{ $photo->id }}">
+      <a href="/photo/show/{{ $photo->id }}">
         <img class="thumbnail" src="/images/{{ $photo->image }}">
       </a>
       <h5>{{$photo->title}}</h5>

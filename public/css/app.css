@@ -1,3 +1,10 @@
 .main{
   padding: 20px;
 }
+
+#main-img{
+  display: block;
+  width:500px !important;
+  margin:auto;
+  padding:30px;
+}
